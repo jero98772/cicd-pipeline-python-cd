@@ -1,0 +1,11 @@
+.git
+.github
+.venv
+venv
+tests
+__pycache__
+*.pyc
+.coverage
+coverage.xml
+.pytest_cache
+.scannerwork
