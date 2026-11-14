@@ -27,7 +27,8 @@ jobs:
           cache: pip
 
       - name: Instalar dependencias
-        run: pip install --require-hashes --only-binary :all: -r requirements-dev.txt
+        run: |
+          pip install --require-hashes --only-binary :all: -r requirements-dev.txt
 
       - name: Black
         run: black --check .
