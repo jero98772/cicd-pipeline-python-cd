@@ -26,3 +26,17 @@ def test_dividir():
     assert dividir(5, -1) == -5.0
     with pytest.raises(ZeroDivisionError):
         dividir(1, 0)
+
+
+def test_operaciones_con_decimales():
+    # 0.1 + 0.2 no es exactamente 0.3 en punto flotante
+    assert sumar(0.1, 0.2) == pytest.approx(0.3)
+    assert multiplicar(0.5, 0.2) == pytest.approx(0.1)
+    assert dividir(1, 3) == pytest.approx(0.3333333)
+
+
+def test_operaciones_con_dos_negativos():
+    assert sumar(-2, -3) == -5
+    assert restar(-2, -3) == 1
+    assert multiplicar(-2, -3) == 6
+    assert dividir(-6, -3) == 2.0
