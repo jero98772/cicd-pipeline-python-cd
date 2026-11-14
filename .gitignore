@@ -1,8 +1,30 @@
-.venv/
+# virtual envs
 venv/
-__pycache__/
+env/
+
+# python
 *.pyc
-.coverage
-coverage.xml
+*.pyo
+*.pyd
+__pycache__/
+
+# pytest
 .pytest_cache/
+pytestdebug.log
+
+# coverage
+.coverage
+htmlcov/
+coverage.xml
+report.html
+acceptance-report.html
+
+# reportes de linters
+pylint-report.txt
+flake8-report.txt
+
+# sonar
 .scannerwork/
+
+# IDE
+.vscode/
