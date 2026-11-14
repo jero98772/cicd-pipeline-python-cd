@@ -5,8 +5,8 @@ from app import calculadora
 pytestmark = pytest.mark.unit
 
 
-def test_autor_tiene_tres_integrantes():
-    assert len(calculadora.AUTOR.split(",")) == 3
+def test_autor_definido():
+    assert calculadora.AUTOR.strip() != ""
 
 
 def test_sumar():

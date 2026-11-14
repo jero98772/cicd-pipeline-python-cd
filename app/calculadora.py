@@ -1,6 +1,6 @@
 """Operaciones basicas de la calculadora."""
 
-AUTOR = "Daniel Arango Sohm, Daniel Arango Sohm, Daniel Arango Sohm"
+AUTOR = "Daniel Arango Sohm"
 
 
 def sumar(a, b):

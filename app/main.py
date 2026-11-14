@@ -1,12 +1,17 @@
 """API HTTP que expone las operaciones de la calculadora."""
 
 import math
+import os
+import secrets
 
 from flask import Flask, jsonify, request
+from flask_wtf.csrf import CSRFProtect
 
 from app import calculadora
 
 app = Flask(__name__)
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY") or secrets.token_hex(32)
+csrf = CSRFProtect(app)
 
 OPERACIONES = {
     "sumar": calculadora.sumar,

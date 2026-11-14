@@ -8,8 +8,6 @@ pruebas de aceptacion contra el contenedor y publicacion en Docker Hub.
 ## Integrantes
 
 1. Daniel Arango Sohm
-2. Daniel Arango Sohm
-3. Daniel Arango Sohm
 
 ## Enlaces
 
