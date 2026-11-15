@@ -74,3 +74,9 @@ def test_index_post_un_numero_invalido(client):
     )
     assert response.status_code == 200
     assert b"Error: Introduce n\xc3\xbameros v\xc3\xa1lidos" in response.data
+
+
+def test_health(client):
+    response = client.get("/health")
+    assert response.status_code == 200
+    assert response.get_json() == {"status": "ok", "version": "local"}
