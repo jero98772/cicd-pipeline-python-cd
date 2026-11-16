@@ -25,3 +25,15 @@ def dividir(a, b):
     if b == 0:
         raise ZeroDivisionError("No se puede dividir por cero")
     return a / b
+
+
+def potencia(a, b):
+    """Retorna a elevado a la b. Lanza OverflowError si el resultado es muy grande."""
+    return a**b
+
+
+def modulo(a, b):
+    """Retorna el residuo de dividir a entre b. Lanza ZeroDivisionError si b es cero."""
+    if b == 0:
+        raise ZeroDivisionError("No se puede dividir por cero")
+    return a % b

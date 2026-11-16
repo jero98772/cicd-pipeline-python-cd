@@ -39,25 +39,19 @@ def test_index_post_multiplicar(client):
 
 
 def test_index_post_dividir(client):
-    response = client.post(
-        "/", data={"num1": "6", "num2": "3", "operacion": "dividir"}
-    )
+    response = client.post("/", data={"num1": "6", "num2": "3", "operacion": "dividir"})
     assert response.status_code == 200
     assert b"Resultado: 2.0" in response.data
 
 
 def test_index_post_dividir_by_zero(client):
-    response = client.post(
-        "/", data={"num1": "6", "num2": "0", "operacion": "dividir"}
-    )
+    response = client.post("/", data={"num1": "6", "num2": "0", "operacion": "dividir"})
     assert response.status_code == 200
     assert b"Error: No se puede dividir por cero" in response.data
 
 
 def test_index_post_invalid_operation(client):
-    response = client.post(
-        "/", data={"num1": "6", "num2": "3", "operacion": "invalid"}
-    )
+    response = client.post("/", data={"num1": "6", "num2": "3", "operacion": "invalid"})
     assert response.status_code == 200
     assert b"Operaci\xc3\xb3n no v\xc3\xa1lida" in response.data
 
@@ -69,9 +63,7 @@ def test_index_post_invalid_numbers(client):
 
 
 def test_index_post_un_numero_invalido(client):
-    response = client.post(
-        "/", data={"num1": "2", "num2": "abc", "operacion": "sumar"}
-    )
+    response = client.post("/", data={"num1": "2", "num2": "abc", "operacion": "sumar"})
     assert response.status_code == 200
     assert b"Error: Introduce n\xc3\xbameros v\xc3\xa1lidos" in response.data
 
@@ -80,3 +72,31 @@ def test_health(client):
     response = client.get("/health")
     assert response.status_code == 200
     assert response.get_json() == {"status": "ok", "version": "local"}
+
+
+def test_index_post_potencia(client):
+    response = client.post(
+        "/", data={"num1": "2", "num2": "3", "operacion": "potencia"}
+    )
+    assert response.status_code == 200
+    assert b"Resultado: 8.0" in response.data
+
+
+def test_index_post_potencia_overflow(client):
+    response = client.post(
+        "/", data={"num1": "10", "num2": "1000", "operacion": "potencia"}
+    )
+    assert response.status_code == 200
+    assert b"Error: El resultado es demasiado grande" in response.data
+
+
+def test_index_post_modulo(client):
+    response = client.post("/", data={"num1": "7", "num2": "3", "operacion": "modulo"})
+    assert response.status_code == 200
+    assert b"Resultado: 1.0" in response.data
+
+
+def test_index_post_modulo_by_zero(client):
+    response = client.post("/", data={"num1": "5", "num2": "0", "operacion": "modulo"})
+    assert response.status_code == 200
+    assert b"Error: No se puede dividir por cero" in response.data
